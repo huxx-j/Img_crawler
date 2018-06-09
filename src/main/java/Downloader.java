@@ -6,13 +6,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Downloader {
-    protected void imageDownloader(String title, String date, String imageUrl){
+    protected void imageDownloader(int index, String title, String date, String imageUrl){
+        String dirPath = System.getProperty("user.home") + "\\Desktop\\" + date;
+        File dir = new File(dirPath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
 
-        File outputFile = new File("C:/Users/test/Desktop/123/"+title+".png");
+        File outputFile = new File("C:/Users/test/Desktop/" + date + "/" + title + "_" + index + ".png");
 
         URL url;
         BufferedImage bi;
-
 
             try {
                 url = new URL(imageUrl);
